@@ -1,0 +1,35 @@
+/* Navbar.css */
+.navbar {
+    height: 50px;
+    width: 100%;
+    background-position: "center";
+    background-repeat: "no-repeat";
+    background-size:auto;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(to right, #ffffff, #FFC98A);
+    color: black;
+  }
+  .profileContiner{
+    background: rgb(255,255,255);
+    background: linear-gradient(134deg, #FFDAAF 10%,#F09D3C 10%,#F09D3C 20%,#902D00 20%,#902D00 23%, #D96E0E 38%, #D96E0E 45%, #F7AE5F 60%);
+    height: "100%";
+    display: flex;
+    justify-content: end;
+
+    align-items: center;
+  }
+  .profile {
+    
+    background-repeat: no-repeat;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 30px;
+  }
+  .user-name {
+    margin-left: 10px;
+    font-weight: bold;
+  }
+ 
