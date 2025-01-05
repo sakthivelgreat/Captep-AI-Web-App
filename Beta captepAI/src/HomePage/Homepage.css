@@ -22,3 +22,31 @@
   border-radius: 4px;
   
 }
+
+
+
+
+
+.left-to-bottom {
+  animation: leftToBottom 1s forwards;
+}
+
+@keyframes leftToBottom {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+
+
+.history-sidebar.show {
+  transform: translateX(0); /* Fully visible */
+}
+
+.history-sidebar {
+  transform: translateX(-100%); /* Initially hidden off-screen */
+  transition: transform 0.3s ease-in-out;
+}

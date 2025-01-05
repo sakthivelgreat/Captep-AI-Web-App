@@ -22,7 +22,7 @@ input[ type="text"]{
     font-size: 20px;
     font-weight: 500;
   }
-  .LeftArrow .leftarrow {
+  .leftarrow {
     font-size: 3rem; /* Set default size */
     background-color: transparent; /* No background by default */
     color: #ccc; /* Default arrow color */
@@ -66,4 +66,36 @@ input[ type="text"]{
 
   .Categoriesdiv:hover{
     box-shadow: 0px 0px 15px #c1aaaa ;
+  }
+
+  .animatedContainer{
+    transition: transform 1s ease-in-out;
+
+
+  }
+
+  .left-to-bottom {
+    animation: leftToBottom 2s forwards;
+  }
+  
+  @keyframes leftToBottom {
+    0% {
+      transform: translateX(-60%);
+    }
+    50% {
+      transform: translateY(15%);
+    }
+  }
+
+  .right-to-bottom {
+    animation: rightToBottom 2s forwards;
+  }
+  
+  @keyframes rightToBottom {
+    0% {
+      transform: translateX(60%);
+    }
+    50% {
+      transform: translateY(15%);
+    }
   }

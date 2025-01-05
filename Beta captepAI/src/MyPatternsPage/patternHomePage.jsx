@@ -24,6 +24,7 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 import SearchIcon from '@mui/icons-material/Search';
 import AddCircleOutlineSharpIcon from '@mui/icons-material/AddCircleOutlineSharp';
 
+
 import PatternCustomizeButton from './PattersCustomizeButton';
 import { Slide } from '@mui/material';
 import Cards from './Cards';
@@ -94,6 +95,9 @@ const containerRef = React.useRef(null);
     const [searchTerm ,setsearchTerm] = useState('');
     const [visible, setVisible] = useState(true);
 
+const [animationClass, setAnimationClass] = useState("");
+
+
     // --------------------------------------
 
     const [open, setOpen] = React.useState(false);
@@ -122,18 +126,29 @@ const containerRef = React.useRef(null);
       
    }
     const clickArrow = ( arrowDirection ) =>{
+
+      
+
+          const newIndex = 
+                arrowDirection == "left"  ? (CurrentIndex === 0 ? categories.length - 1 :
+                CurrentIndex - 1) : (CurrentIndex === categories.length - 1 ? 0 : CurrentIndex + 1);
+            
+            setCurrentIndex(newIndex); 
+            setclickSection(categories[newIndex]); 
+            setclickPattern(categories[newIndex]);
+            setarrowDir(arrowDirection);
+            if ( arrowDirection === "left") {
+                setAnimationClass("left-to-bottom");
+              } else {
+                setAnimationClass("right-to-bottom");
+              }
+       
+      
         setVisible(false);
         setTimeout(() => {
-        setVisible(true);
-        const newIndex = 
-            arrowDirection == "left"  ? (CurrentIndex === 0 ? categories.length - 1 :
-             CurrentIndex - 1) : (CurrentIndex === categories.length - 1 ? 0 : CurrentIndex + 1);
-        
-        setCurrentIndex(newIndex); 
-        setclickSection(categories[newIndex]); 
-        setclickPattern(categories[newIndex]);
-        setarrowDir(arrowDirection);
-       
+            setAnimationClass(""); 
+            setVisible(true);
+            
         }, 10);
     };
     
@@ -150,7 +165,7 @@ const containerRef = React.useRef(null);
         <div style={{height:'20em',background: 'linear-gradient(to bottom,  #1A1A1A 9%,  #383838 36%,  #4D4D4D 55%, #4D4D4D 84%)', padding:'20px'}}>
             <div style={{display:'flex',justifyContent:'center'}}><span style={{fontSize:'22px', fontWeight:'600' ,color:'white'}}>Categories</span></div>
             <div style={{position:'relative',bottom:'2em',display:'flex',justifyContent:'space-between'}}>
-                <div onClick={() =>clickCatgoriesSection(-2)} style={{ display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div  onClick={() =>clickCatgoriesSection(-2)} style={{ display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv'><img  style={{width:'6em',height:'3em'}} src= {getCategory(-2).img}   /></div>
                     <span style={{ color:'white',}}>{getCategory(-2).name} </span>
                 </div>
@@ -160,7 +175,7 @@ const containerRef = React.useRef(null);
                 </div>
             </div>
             <div style={{position:'relative',bottom:'4.55em',display:'flex',justifyContent:'space-around'}}>
-                <div onClick={() =>clickCatgoriesSection(-1)}  style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div  onClick={() =>clickCatgoriesSection(-1)}  style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv' ><img style={{width:'7em',height:'4em'}} src={getCategory(-1).img}   /></div>
                     <span style={{ color:'white'}}>{getCategory(-1).name} </span>
                 </div>
@@ -173,13 +188,13 @@ const containerRef = React.useRef(null);
                 <div style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column',gap:'10px'}}>
                    <div style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}>
                         <div style={{display:'flex',justifyContent:'center',alignItems:'center'}} ref={containerRef}> 
-                            <div  className="LeftArrow" onClick={()=> clickArrow("left") }> <KeyboardArrowLeftIcon className='leftarrow' style={{ color:'#D9D9D9',width:'100px',height:'100px'}}  /></div>
-                            <Slide in={visible}  direction={arrowDir === "right" ? "left" : "right"} timeout={100} container={containerRef.current}>
-                                <div onClick={() => clickCatgoriesSection(0)} className="Categoriesdiv">
+                            <div   onClick={()=> clickArrow("left") }> <KeyboardArrowLeftIcon className='leftarrow' style={{ color:'#D9D9D9',width:'100px',height:'100px'}}  /></div>
+                               
+                                <div className={`animatedContainer ${animationClass}`} onClick={() => clickCatgoriesSection(0)}  >
                                     <img style={{ width: '9em', height: '6em' }} src={getCategory(0).img} alt={getCategory(0).name} />
                                 </div>
-                            </Slide>
-                            <div className="LeftArrow" onClick={()=> clickArrow("right")}> <KeyboardArrowRightIcon className='leftarrow' style={{color:'white', width:'100px',height:'100px'}} /></div>
+                            
+                            <div  onClick={()=> clickArrow("right")}> <KeyboardArrowRightIcon className='leftarrow' style={{color:'white', width:'100px',height:'100px'}} /></div>
                         </div>
                         <span style={{ color:'white'}}>{getCategory(0).name} </span>
                    </div>

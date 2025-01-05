@@ -10,7 +10,12 @@ export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
     const showManuDetails =() => {
         setshowmanu(!showmenu);
     }
+    const [ClickMenu, setClickMenu] =useState("Chat");
 
+    const clickChildMenuOption = ( Menu) => {
+        setClickMenu(Menu);
+        clickMenu(Menu);
+    }
 
 
   return (
@@ -23,7 +28,24 @@ export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
             </div>
             {showmenu &&(
                  <div style={{ padding:'5px', position:'absolute', width:'192px',backgroundColor:'white',borderBottomLeftRadius:'8px',borderBottomRightRadius:'8px'}}>
-                    <MenuClickDetails clickChildMenu= { clickMenu }/>
+                    {/* <MenuClickDetails clickChildMenu= { clickMenu }/> */}
+                    <div style={{ display:'flex', flexDirection:'column', justifyContent:'center',alignItems:'center',gap:'5px', padding:'0px 2px  10px 2px'}} >
+                        <div  onClick={()=>clickChildMenuOption("Chat")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
+                        <div style={{ width:'15px', height:'13px'}}> {ClickMenu == "Chat" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
+                            
+                        <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
+                            <DescriptionIcon style={{ width:'22px',height:'22px'}}/>
+                            <span style={{fontSize:'18px'}}>Chat</span>
+                        </div>
+                        </div>
+                        <div onClick={()=>clickChildMenuOption("Patterns")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
+                        <div style={{ width:'15px', height:'13px'}}> {ClickMenu == "Patterns" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
+                        <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
+                            <ViewKanbanIcon style={{ width:'22px',height:'22px'}}/>
+                            <span style={{fontSize:'18px'}}>Patterns</span>
+                        </div>
+                        </div>
+                    </div>
                </div>
             )}
         </div>
@@ -64,20 +86,28 @@ export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
 export default HistorySideBar;
 
 
-const MenuClickDetails =( {clickChildMenu} ) => {
+const MenuClickDetails =({ clickChildMenu } ) => {
+    const [clickMenu, setclickMenu] =useState("Chat");
+
+    const clickChildMenuOption = ( Menu) => {
+        setclickMenu(Menu);
+        clickChildMenu(Menu);
+    }
+
     return(
 
         <div style={{ display:'flex', flexDirection:'column', justifyContent:'center',alignItems:'center',gap:'5px', padding:'0px 2px  10px 2px'}} >
             <div  onClick={()=>clickChildMenu("Chat")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-               <div> <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span></div>
+               <div style={{ width:'15px', height:'13px'}}> {clickMenu == "Chat" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
+                
                <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
                 <DescriptionIcon style={{ width:'22px',height:'22px'}}/>
                 <span style={{fontSize:'18px'}}>Chat</span>
                </div>
             </div>
             <div onClick={()=>clickChildMenu("Patterns")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-               <div> <span><img src="/mark tick.png" style={{ width:'15px', height:'13px'}} /></span></div>
-               <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
+            <div style={{ width:'15px', height:'13px'}}> {clickMenu == "Patterns" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
+            <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
                 <ViewKanbanIcon style={{ width:'22px',height:'22px'}}/>
                 <span style={{fontSize:'18px'}}>Patterns</span>
                </div>
