@@ -3,7 +3,7 @@ import './Homepage.css'
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import DescriptionIcon from '@mui/icons-material/Description';
 
-export const HistorySideBar = () => {
+export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
 
     const [showmenu , setshowmanu] = useState(false);
 
@@ -14,7 +14,7 @@ export const HistorySideBar = () => {
 
 
   return (
-    <div style={{ height:'92%',display:'flex', gap:'15px',flexDirection:'column' ,alignItems:'center',backgroundColor:'#FFF8F0',padding:'20px 0px',boxShadow: "4px 0 15px rgba(0, 0, 0, 0.2)", marginRight: "8px",  width:'260px'}}>
+    <div style={{ height:'92%',display:'flex', gap:'15px',flexDirection:'column' ,alignItems:'center',backgroundColor:'#FFF8F0',padding:'20px 0px',boxShadow: "4px 0 5px rgba(50, 48, 48, 0.2)", marginRight: "8px",  width:'260px'}}>
         <div >
             <div style={{padding:'10px',backgroundColor:'white', borderRadius:'8px' ,width:'auto'}}>
                 <div style={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#09757A',borderRadius:'6px',padding:'6px 70px', cursor:'pointer'}} onClick={showManuDetails} >
@@ -23,7 +23,7 @@ export const HistorySideBar = () => {
             </div>
             {showmenu &&(
                  <div style={{ padding:'5px', position:'absolute', width:'192px',backgroundColor:'white',borderBottomLeftRadius:'8px',borderBottomRightRadius:'8px'}}>
-                    <MenuClickDetails/>
+                    <MenuClickDetails clickChildMenu= { clickMenu }/>
                </div>
             )}
         </div>
@@ -40,7 +40,7 @@ export const HistorySideBar = () => {
                     <span style={{ fontSize:'16px', fontWeight:'600',color:'#8C8C93'}}>Today</span>
                 </div>
                 <div style={{ padding:'15px 10px' , display:'flex', flexDirection:'column',gap:'7px'}}>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>What is  AI</span>
+                    <div onClick={()=> clickHistoryMenu("history1")}>  <span  style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>What is  AI</span></div>
                     <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Machine Learning</span>
                     <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>AI Generate Capabilities</span>
                 </div>
@@ -64,18 +64,18 @@ export const HistorySideBar = () => {
 export default HistorySideBar;
 
 
-const MenuClickDetails =() => {
+const MenuClickDetails =( {clickChildMenu} ) => {
     return(
 
         <div style={{ display:'flex', flexDirection:'column', justifyContent:'center',alignItems:'center',gap:'5px', padding:'0px 2px  10px 2px'}} >
-            <div className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
+            <div  onClick={()=>clickChildMenu("Chat")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
                <div> <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span></div>
                <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
                 <DescriptionIcon style={{ width:'22px',height:'22px'}}/>
                 <span style={{fontSize:'18px'}}>Chat</span>
                </div>
             </div>
-            <div className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
+            <div onClick={()=>clickChildMenu("Patterns")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
                <div> <span><img src="/mark tick.png" style={{ width:'15px', height:'13px'}} /></span></div>
                <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
                 <ViewKanbanIcon style={{ width:'22px',height:'22px'}}/>

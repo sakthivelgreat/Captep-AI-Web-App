@@ -22,4 +22,48 @@ input[ type="text"]{
     font-size: 20px;
     font-weight: 500;
   }
+  .LeftArrow .leftarrow {
+    font-size: 3rem; /* Set default size */
+    background-color: transparent; /* No background by default */
+    color: #ccc; /* Default arrow color */
+    transition: transform 0.2s ease, color 0.3s ease, filter 0.3s ease;
+  }
+  .LeftArrow:hover .leftarrow {
+    border-radius: 20px;
+    filter: drop-shadow(0px 0px 10px #ffffff); /* Hover shadow */
+    transform: scale(1.2); /* Slight zoom effect */
+    color: white; /* Optional color change */
+  }
+
+.patternContainer::-webkit-scrollbar{
+    color: white;
+    width: 8px;
+}  
+.patternContainer::-webkit-scrollbar-thumb{
+    background-color: #FC8200 ; 
+    border-radius: 10px; 
+
+}
+
+.RightArrow:hover .leftarrow {
+    box-shadow: 0px 0px 15px rgba(216, 202, 202, 0.25) ;
+    transform: scale(1.2);
+    color: white;
+    transition: all 0.15s ease; /* Smooth animation for right arrow */
+}
+
+.category.center {
+    transform: scale(1.2);
+    opacity: 1;
+    z-index: 2;
+  }
   
+  .category.left,
+  .category.right {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+
+  .Categoriesdiv:hover{
+    box-shadow: 0px 0px 15px #c1aaaa ;
+  }
