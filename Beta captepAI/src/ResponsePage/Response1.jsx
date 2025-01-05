@@ -2,8 +2,10 @@ import React from 'react'
 
 export default function Response1() {
   return (
-    <div style={{display:'grid' ,gridTemplateRows:' 1fr auto'}}>
-        <div></div>
+    <div style={{display:'grid' ,gridTemplateRows:' 1fr auto',padding:'20px'}}>
+        <div>
+            
+        </div>
         <div style={{ display:'flex',justifyContent:'center',alignItems:'center'}}>
             <div className="main-search" style={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:' #F3E9E6', width:'700px', height:'80px', borderRadius:'20px'}}>
                 <div  style={{display:'flex',justifyContent:'space-between',alignItems:'center',gap:'50px',padding:'0px 40px', width:'90%'}}>
