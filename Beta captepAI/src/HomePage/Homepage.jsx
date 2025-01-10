@@ -3,9 +3,9 @@ import { useState } from 'react';
 import Navbar from './Navbar';
 import './Homepage.css';
 import HistorySideBar from './HistorySideBar';
-import ProfileDetails from './profileDetails';
+
 import MainPromptpage from './MainPromptpage';
-import { PatternHomePage } from '../MyPatternsPage/patternHomePage';
+import { PatternHomePage } from '../MyPatternsPage/patternHomePage2';
 import Response1 from '../ResponsePage/Response1';
 
 
@@ -39,8 +39,8 @@ export const Homepage = () => {
       <div><Navbar showSideBar={showSideBar} showProfileEdit={ showProfileEdit }/> </div>
       <div style={{display:'grid',gridTemplateColumns: showbar ? 'auto 1fr' : '1fr',overflow:'hidden', width:'100%'}}>
        
-        {showbar && <HistorySideBar clickMenu={handleMenuClick} clickHistoryMenu={ClickHistory} />}
-        {showProfile && <ProfileDetails />}
+        {showbar && <HistorySideBar isOpen={showbar} clickMenu={handleMenuClick} clickHistoryMenu={ClickHistory} />}
+
         {clickMenuOption === "Chat" && <MainPromptpage />}
         {clickMenuOption === "Patterns" && <PatternHomePage />}
         {clickHistoryOption === "history1"  && <Response1/>}

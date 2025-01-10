@@ -4,9 +4,12 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 
-export default function Cards({Logo, SpanTitle, SpanParagraph, BackgroundColor,Border}) {
+export default function Cards({handleClickOpen,Logo, SpanTitle, SpanParagraph, BackgroundColor,Border}) {
+    const handleClick=()=>{
+        handleClickOpen(true);
+    }
   return (
-     <div style={{ display:'flex',justifyContent:'center',alignItems:'center',width:'200px', height:'300px',background: BackgroundColor || 'linear-gradient(26%, #A706F4 100%, #D407F9 50%)',borderRadius:'12px', border: Border}}>
+     <div style={{ display:'flex',justifyContent:'center',alignItems:'center',width:'200px', height:'300px',background: BackgroundColor || 'linear-gradient(26%, #A706F4 100%, #D407F9 50%)',borderRadius:'12px', border: Border}} onClick={handleClick}>
         <div style={{ display:'flex',flexDirection:'column', justifyContent:'space-between',gap:'10px',width:'96%', height:'94%',background: 'linear-gradient(26%, #A706F4 100%, #D407F9 50%)',borderRadius:'12px', border: ' 2.5px solid white', padding:'8px 4px'}} >
             <div style={{ display:'flex',justifyContent:'space-between',alignItems:'center', padding:'4px 2px'}}>
                 <div style={{ backgroundColor:'white',borderRadius:'50%', display:'flex',justifyContent:'center',alignItems:'center'}}>
@@ -20,9 +23,9 @@ export default function Cards({Logo, SpanTitle, SpanParagraph, BackgroundColor,B
                     <span style={{width:'100%', color:'white', fontFamily: '"Inter", serif',fontSize:'17px' , display: '-webkit-box', WebkitBoxOrient: 'vertical', overflow: 'hidden', WebkitLineClamp: '5', textOverflow: 'ellipsis' }}>{SpanParagraph}</span>
             </div>
             <div style={{display:'flex', justifyContent:'space-around',alignItems:'center'}}>
-                <ChatBubbleOutlineIcon  style={{ color:'white', width:'30px' ,height:'30px'}} />
-                <VisibilityOutlinedIcon style={{ color:'white', width:'30px' ,height:'30px'}}/>
-                <FavoriteBorderIcon style={{ color:'white', width:'30px' ,height:'30px'}}/>
+                <ChatBubbleOutlineIcon  style={{ color:'white', width:'25px' ,height:'25px'}} />
+                <VisibilityOutlinedIcon style={{ color:'white', width:'25px' ,height:'25px'}}/>
+                <FavoriteBorderIcon style={{ color:'white', width:'25px' ,height:'25px'}}/>
             </div>
         </div> 
      </div> 

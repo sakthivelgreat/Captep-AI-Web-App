@@ -3,51 +3,52 @@ import './Homepage.css'
 import ViewKanbanIcon from '@mui/icons-material/ViewKanban';
 import DescriptionIcon from '@mui/icons-material/Description';
 
-export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
+import { useDropdown, DropdownContext } from '@mui/base/useDropdown';
+import { useMenuButton } from '@mui/base/useMenuButton';
 
-    const [showmenu , setshowmanu] = useState(false);
 
-    const showManuDetails =() => {
-        setshowmanu(!showmenu);
-    }
+import * as React from 'react';
+import { Dropdown } from '@mui/base/Dropdown';
+import { Menu } from '@mui/base/Menu';
+import { MenuButton  } from '@mui/base/MenuButton';
+import { MenuItem as BaseMenuItem, menuItemClasses } from '@mui/base/MenuItem';
+import { padding, styled } from '@mui/system';
+
+
+
+
+export const HistorySideBar = ( { clickMenu ,clickHistoryMenu ,isOpen} ) => {
     const [ClickMenu, setClickMenu] =useState("Chat");
-
     const clickChildMenuOption = ( Menu) => {
         setClickMenu(Menu);
         clickMenu(Menu);
     }
-
-
   return (
-    <div style={{ height:'92%',display:'flex', gap:'15px',flexDirection:'column' ,alignItems:'center',backgroundColor:'#FFF8F0',padding:'20px 0px',boxShadow: "4px 0 5px rgba(50, 48, 48, 0.2)", marginRight: "8px",  width:'260px'}}>
-        <div >
-            <div style={{padding:'10px',backgroundColor:'white', borderRadius:'8px' ,width:'auto'}}>
-                <div style={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#09757A',borderRadius:'6px',padding:'6px 70px', cursor:'pointer'}} onClick={showManuDetails} >
-                    <button style={{all:'unset'}}><span style={{color:'white',fontSize:'18px'}}>Menu</span></button>
-                </div>
-            </div>
-            {showmenu &&(
-                 <div style={{ padding:'5px', position:'absolute', width:'192px',backgroundColor:'white',borderBottomLeftRadius:'8px',borderBottomRightRadius:'8px'}}>
-                    {/* <MenuClickDetails clickChildMenu= { clickMenu }/> */}
-                    <div style={{ display:'flex', flexDirection:'column', justifyContent:'center',alignItems:'center',gap:'5px', padding:'0px 2px  10px 2px'}} >
-                        <div  onClick={()=>clickChildMenuOption("Chat")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-                        <div style={{ width:'15px', height:'13px'}}> {ClickMenu == "Chat" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
-                            
-                        <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
-                            <DescriptionIcon style={{ width:'22px',height:'22px'}}/>
+    <div className={`sidebar ${isOpen ? "open" : "closed"}`} style={{ height:'92%',display:'flex', gap:'15px',flexDirection:'column' ,alignItems:'center',backgroundColor:'#FFF8F0',padding:'20px 0px',boxShadow: "4px 0 5px rgba(50, 48, 48, 0.2)", marginRight: "8px",  width:'260px'}}>
+        <div > 
+       <div style={{padding:'10px',backgroundColor:'white', borderRadius:'8px' ,width:'auto'}}>
+            <Dropdown>
+                <MenuButton style={{display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:'#09757A',borderRadius:'6px',padding:'6px 70px', cursor:'pointer'}} >
+                    <button style={{all:'unset'}}><span style={{color:'white',fontSize:'18px',fontFamily:'"Inter", serif'}}>Menu</span></button>
+                </MenuButton>
+                <Menu   slots={{ listbox: StyledListbox }}>
+                    <StyledMenuItem  onClick={()=>clickChildMenuOption("Chat")}className={`menu-option ${ClickMenu === 'Chat' ? 'active' : ''}`} >
+                        <div style={{ width: '20px', height: '20px',padding:'2px 10px'}}>{ClickMenu === 'Chat' && <img src="/mark tick.png" alt="tick" style={{ width: '15px', height: '13px' }} />}</div>
+                        <div style={{ width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'20px'}}>
+                            <DescriptionIcon style={{  width: '22px', height: '22px' }} />
                             <span style={{fontSize:'18px'}}>Chat</span>
                         </div>
-                        </div>
-                        <div onClick={()=>clickChildMenuOption("Patterns")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-                        <div style={{ width:'15px', height:'13px'}}> {ClickMenu == "Patterns" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
-                        <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
-                            <ViewKanbanIcon style={{ width:'22px',height:'22px'}}/>
+                    </StyledMenuItem>
+                    <StyledMenuItem  onClick={()=>clickChildMenuOption("Patterns")}  className={`menu-option ${ClickMenu === 'Patterns' ? 'active' : ''}`} >
+                        <div style={{width: '20px', height: '20px',padding:'2px 10px'}}>  {ClickMenu === 'Patterns' && <img src="/mark tick.png" alt="tick" style={{ width: '15px', height: '13px' }} />}</div>
+                        <div style={{width: '80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'20px'}}>
+                            <ViewKanbanIcon style={{ width: '22px', height: '22px' }} />
                             <span style={{fontSize:'18px'}}>Patterns</span>
                         </div>
-                        </div>
-                    </div>
-               </div>
-            )}
+                    </StyledMenuItem>
+                </Menu>
+            </Dropdown>
+        </div>
         </div>
         <div style={{ position:'',display:'flex',justifyContent:'center',alignItems:'center',backgroundColor:' white',boxShadow: "0 0 10px rgba(0, 0, 0, 0.2)",borderRadius:'6px',padding:'6px 20px', cursor:'pointer'}}>
             <button style={{all:'unset', display:'flex',justifyContent:'left',alignItems:'center', gap:'16px'}}> <img src="/New Chat Icon.png"  style={{ width:'23px', height:'23px'}} /> <span style={{color:'#FC8200',fontSize:'16px' ,fontWeight:'500'}}>New Chat</span></button>
@@ -62,19 +63,19 @@ export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
                     <span style={{ fontSize:'16px', fontWeight:'600',color:'#8C8C93'}}>Today</span>
                 </div>
                 <div style={{ padding:'15px 10px' , display:'flex', flexDirection:'column',gap:'7px'}}>
-                    <div onClick={()=> clickHistoryMenu("history1")}>  <span  style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>What is  AI</span></div>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Machine Learning</span>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>AI Generate Capabilities</span>
+                    <div onClick={()=> clickHistoryMenu("history1")}>  <span  style={{ cursor:'pointer',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>What is  AI</span></div>
+                    <span style={{cursor:'pointer', whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Machine Learning</span>
+                    <span style={{cursor:'pointer', whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>AI Generate Capabilities</span>
                 </div>
                 <div style={{display:'flex',justifyContent:'start',alignItems:'center'}}>
                     <span style={{ fontSize:'16px', fontWeight:'600',color:'#8C8C93'}}>Yesterday</span>
                 </div>
                 <div style={{ padding:'15px 10px' , display:'flex', flexDirection:'column',gap:'7px'}}>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Content  Generate  Request</span>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>NavBar CSS Styling</span>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Login Page Token Removal</span>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Merge Table Cells Example</span>
-                    <span style={{ whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Google Search Guide</span>
+                    <span style={{ cursor:'pointer',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Content  Generate  Request</span>
+                    <span style={{ cursor:'pointer',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>NavBar CSS Styling</span>
+                    <span style={{cursor:'pointer', whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Login Page Token Removal</span>
+                    <span style={{ cursor:'pointer',whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Merge Table Cells Example</span>
+                    <span style={{cursor:'pointer', whiteSpace:'nowrap',textOverflow:'ellipsis',overflow:'hidden',width:'175px'}}>Google Search Guide</span>
                 </div>
             </div>
         </div>
@@ -84,34 +85,33 @@ export const HistorySideBar = ( { clickMenu ,clickHistoryMenu} ) => {
 }
 
 export default HistorySideBar;
+ const StyledListbox = styled('ul')`
+  background: white;
+  border-radius: 8px;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  width: 200px;
+  margin-top: 4px;
+  margin: 0;
+`;
 
+const StyledMenuItem = styled(BaseMenuItem)`
+  width: 80%;
+  display: flex;
+  gap:5px;
+  padding:'0px';
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 
-const MenuClickDetails =({ clickChildMenu } ) => {
-    const [clickMenu, setclickMenu] =useState("Chat");
+  &:hover {
+    background-color: #e5eaf2;
+  }
 
-    const clickChildMenuOption = ( Menu) => {
-        setclickMenu(Menu);
-        clickChildMenu(Menu);
-    }
-
-    return(
-
-        <div style={{ display:'flex', flexDirection:'column', justifyContent:'center',alignItems:'center',gap:'5px', padding:'0px 2px  10px 2px'}} >
-            <div  onClick={()=>clickChildMenu("Chat")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-               <div style={{ width:'15px', height:'13px'}}> {clickMenu == "Chat" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
-                
-               <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
-                <DescriptionIcon style={{ width:'22px',height:'22px'}}/>
-                <span style={{fontSize:'18px'}}>Chat</span>
-               </div>
-            </div>
-            <div onClick={()=>clickChildMenu("Patterns")} className='manuClickButtons' style={{width:'80%',display:'flex',justifyContent:'left',alignItems:'center',gap:'15px' ,padding:'6px 10px'}}>
-            <div style={{ width:'15px', height:'13px'}}> {clickMenu == "Patterns" &&( <span><img src="/mark tick.png"  style={{ width:'15px', height:'13px'}} /></span>)} </div>
-            <div style={{display:'flex',justifyContent:'left',alignItems:'center',gap:'8px'}}>
-                <ViewKanbanIcon style={{ width:'22px',height:'22px'}}/>
-                <span style={{fontSize:'18px'}}>Patterns</span>
-               </div>
-            </div>
-        </div>
-    )
-}
+  &.${menuItemClasses.focusVisible} {
+    outline: 3px solid #3399ff;
+  }
+`;

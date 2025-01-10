@@ -1,0 +1,59 @@
+/* Swiper container */
+.swiper {
+    width: 100%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Swiper slide */
+  .swiper-slide {
+    display: flex !important ;
+    flex-direction: row !important;
+    justify-content: center !important;
+    align-items: center !important;
+    background-color: #2b2b2b; /* Dark background for contrast */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Hover effect for slides */
+  .swiper-slide:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+  }
+  
+  /* Image inside slides */
+  .swiper-slide img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover; /* Ensures the image fits properly */
+  }
+  
+  /* Navigation buttons */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #fff; /* White arrows */
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .swiper-button-prev:hover,
+  .swiper-button-next:hover {
+    color: #ffd700; /* Gold on hover */
+  }
+  
+  /* Pagination dots */
+  .swiper-pagination-bullet {
+    background: #ffffff; /* White dots */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+  }
+  
+  .swiper-pagination-bullet-active {
+    opacity: 1; /* Fully visible active dot */
+  }
+  

@@ -3,6 +3,8 @@ import FunctionsSharpIcon from '@mui/icons-material/FunctionsSharp';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import LocalPostOfficeIcon from '@mui/icons-material/LocalPostOffice';
 
+
+
 export default function MainPromptpage() {
   return (
     <div style={{display:'grid',gridTemplateColumns:' 1fr auto'}}>
@@ -28,7 +30,7 @@ const ActionButtons = () => {
   return (
     <div className="action-buttons" style={{display:'flex',justifyContent:'center',gap:'20px',flexWrap:'wrap'}}>
       {actions.map((action) => (
-        <button key={action.id} className="action-button" style={{display:'flex',justifyContent:'center',alignItems:'center',gap:'15px',flex:' 0 0 48%', boxSizing:'border-box', backgroundColor:'white',border:'1.5px solid #FC8200',color:'black', padding:'8px 15px',width:'130px',height:'45px',borderRadius:'8px',cursor:'pointer',fontSize:'16px',textAlign:'center'}}>
+        <button key={action.id} className="action-button" style={{display:'flex',justifyContent:'start',alignItems:'center',gap:'15px',flex:' 0 0 48%', boxSizing:'border-box', backgroundColor:'white',border:'1.5px solid #FC8200',color:'black', padding:'8px 15px',width:'130px',height:'45px',borderRadius:'8px',cursor:'pointer',fontSize:'16px',textAlign:'center'}}>
           <span  style={{display:'flex',justifyContent:'center',alignItems:'center',fontSize:'24px',marginBottom:'5px'}}>
             {action.icon}
           </span>

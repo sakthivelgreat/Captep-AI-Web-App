@@ -161,25 +161,27 @@ const [animationClass, setAnimationClass] = useState("");
     
 
   return (
+    
     <div className='patternContainer' style={{width:'100%',display:'grid', gridTemplateRows:' auto 1fr',overflow:'auto',overflowX:'hidden' }}>
+
         <div style={{height:'20em',background: 'linear-gradient(to bottom,  #1A1A1A 9%,  #383838 36%,  #4D4D4D 55%, #4D4D4D 84%)', padding:'20px'}}>
             <div style={{display:'flex',justifyContent:'center'}}><span style={{fontSize:'22px', fontWeight:'600' ,color:'white'}}>Categories</span></div>
             <div style={{position:'relative',bottom:'2em',display:'flex',justifyContent:'space-between'}}>
-                <div  onClick={() =>clickCatgoriesSection(-2)} style={{ display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div  onClick={() =>clickCatgoriesSection(-2)} style={{ cursor:'pointer', display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv'><img  style={{width:'6em',height:'3em'}} src= {getCategory(-2).img}   /></div>
                     <span style={{ color:'white',}}>{getCategory(-2).name} </span>
                 </div>
-                <div onClick={() =>clickCatgoriesSection(2)} style={{ display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div onClick={() =>clickCatgoriesSection(2)} style={{cursor:'pointer', display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv'><img style={{width:'6em',height:'3em'}} src={getCategory(2).img} /></div>
                     <span style={{ color:'white'}}>{getCategory(2).name} </span>
                 </div>
             </div>
             <div style={{position:'relative',bottom:'4.55em',display:'flex',justifyContent:'space-around'}}>
-                <div  onClick={() =>clickCatgoriesSection(-1)}  style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div  onClick={() =>clickCatgoriesSection(-1)}  style={{cursor:'pointer',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv' ><img style={{width:'7em',height:'4em'}} src={getCategory(-1).img}   /></div>
                     <span style={{ color:'white'}}>{getCategory(-1).name} </span>
                 </div>
-                <div onClick={() =>clickCatgoriesSection(1)}  style={{display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
+                <div onClick={() =>clickCatgoriesSection(1)}  style={{cursor:'pointer',display:'flex',justifyContent:'center',alignItems:'center',flexDirection:'column'}}> 
                     <div className='Categoriesdiv'><img style={{width:'7em',height:'4em'}} src={getCategory(1).img}    /></div>
                     <span style={{ color:'white',}}>{getCategory(1).name} </span>
                 </div>
@@ -190,7 +192,7 @@ const [animationClass, setAnimationClass] = useState("");
                         <div style={{display:'flex',justifyContent:'center',alignItems:'center'}} ref={containerRef}> 
                             <div   onClick={()=> clickArrow("left") }> <KeyboardArrowLeftIcon className='leftarrow' style={{ color:'#D9D9D9',width:'100px',height:'100px'}}  /></div>
                                
-                                <div className={`animatedContainer ${animationClass}`} onClick={() => clickCatgoriesSection(0)}  >
+                                <div style={{cursor:'pointer'}} className={`animatedContainer ${animationClass}`} onClick={() => clickCatgoriesSection(0)}  >
                                     <img style={{ width: '9em', height: '6em' }} src={getCategory(0).img} alt={getCategory(0).name} />
                                 </div>
                             
@@ -215,10 +217,10 @@ const [animationClass, setAnimationClass] = useState("");
         <div style={{ width:'100%',padding:'10px', backgroundColor:' #F9FAFB',display:'flex', flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
             <div style={{ display:'flex', width:'80%',justifyContent:'space-between', alignItems:'center', gap:'50px', padding:'20px 0px'}}>
                 <PatternCustomizeButton/>    
-                <div style={{ backgroundColor:'white', padding:'2px 20px',width:'200px', height:'50px', borderRadius:'8px',boxShadow: '0px 0px 15px rgba(54, 52, 52, 0.25)',display:'flex' ,justifyContent:'center',alignItems:'center',gap:'10px'}} >  
+                <div style={{ cursor:'pointer',backgroundColor:'white', padding:'2px 20px',width:'200px', height:'50px', borderRadius:'8px',boxShadow: '0px 0px 15px rgba(54, 52, 52, 0.25)',display:'flex' ,justifyContent:'center',alignItems:'center',gap:'10px'}} >  
                     <span style={{ fontSize:'18px', fontWeight:'600',fontFamily: '"Inter", serif'}}>Create Section</span>
                 </div>
-                <div style={{ backgroundColor:'white', padding:'2px 20px', width:'200px', height:'50px', borderRadius:'8px',boxShadow: '0px 0px 15px rgba(54, 52, 52, 0.25)',display:'flex' ,justifyContent:'center',alignItems:'center',gap:'10px'}} >  
+                <div style={{ cursor:'pointer',backgroundColor:'white', padding:'2px 20px', width:'200px', height:'50px', borderRadius:'8px',boxShadow: '0px 0px 15px rgba(54, 52, 52, 0.25)',display:'flex' ,justifyContent:'center',alignItems:'center',gap:'10px'}} >  
                     <AddCircleOutlineSharpIcon style={{ width:'30', height:'30'}}/>
                     <span style={{ fontSize:'18px', fontWeight:'600',fontFamily: '"Inter", serif'}}>New patterns</span>
                 </div>

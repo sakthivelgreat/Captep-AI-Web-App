@@ -17,10 +17,26 @@
 .history-sidebar.show {
   transform: translateX(0);
 }
-.manuClickButtons:hover {
+.menu-option:hover {
   background-color: #EBF4FF;
   border-radius: 4px;
   
+}
+
+.menu-option {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.menu-option span {
+  font-size: 18px;
+}
+
+.menu-option.active {
+  font-weight: bold;   
 }
 
 
@@ -28,7 +44,7 @@
 
 
 .left-to-bottom {
-  animation: leftToBottom 1s forwards;
+  animation: leftToBottom 2s forwards;
 }
 
 @keyframes leftToBottom {
@@ -49,4 +65,50 @@
 .history-sidebar {
   transform: translateX(-100%); /* Initially hidden off-screen */
   transition: transform 0.3s ease-in-out;
+}
+
+
+
+.sidebar {
+  height: 92%;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: center;
+  background-color: #FFF8F0;
+  padding: 20px 0;
+  box-shadow: 4px 0 5px rgba(50, 48, 48, 0.2);
+  margin-right: 8px;
+  width: 260px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+}
+
+.open {
+  display: none;
+  animation: slideIn 2s forwards; 
+}
+
+.sidebar.closed {
+  display: block;
+  animation: slideOut 2s forwards;
+}
+
+/* Keyframes for sliding animation */
+@keyframes slideIn {
+  0% {
+    left: -250px;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: -250px;
+  }
 }

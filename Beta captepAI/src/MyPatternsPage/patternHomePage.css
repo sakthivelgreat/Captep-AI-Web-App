@@ -75,7 +75,7 @@ input[ type="text"]{
   }
 
   .left-to-bottom {
-    animation: leftToBottom 2s forwards;
+    animation: leftToBottom 1s forwards;
   }
   
   @keyframes leftToBottom {
@@ -88,7 +88,7 @@ input[ type="text"]{
   }
 
   .right-to-bottom {
-    animation: rightToBottom 2s forwards;
+    animation: rightToBottom 1s forwards;
   }
   
   @keyframes rightToBottom {
@@ -99,3 +99,118 @@ input[ type="text"]{
       transform: translateY(15%);
     }
   }
+
+
+/* click patterns cards */
+
+  .rightArrow{
+    transform: rotate(180deg);
+  }
+
+  
+  .bottom-to-topleft {
+    animation: bottomToLeft 1.5s forwards;
+  }
+  
+  @keyframes bottomToLeft {
+    0% {
+      transform: translateY(-30%) translateX(30%); 
+    }
+    50% {
+      transform: translateY(0%) translateX(0%);
+    }
+    100% {
+      transform: translateY(60%) translateX(-60%); 
+    }
+  }
+  
+  .top-to-leftbottom {
+    animation: topToLeft 1s forwards;
+  }
+  
+  @keyframes topToLeft {
+    10% {
+      transform: translateY(-50%) translateX(10%);
+    }
+    50% {
+      transform: translateY(0%) translateX(0%); 
+    }
+    100% {
+      transform: translateY(50%) translateX(0%); 
+    }
+  }
+  
+  .top-to-rightbottom {     
+    animation: topToRight 1.5s forwards;
+  }
+  
+  @keyframes topToRight {
+    
+    0% {
+      transform: translateY(-30%) translateX(-30%);
+       /* Move to normal position */
+    }
+    50% {
+      transform: translateY(0%) translateX(0%); 
+    }
+    100% {
+      transform: translateY(60%) translateX(60%);/* End at the bottom */
+    }
+  }
+  
+  .bottom-to-topright {
+    animation: bottomToTopRight 1s forwards;
+  }
+  
+  @keyframes bottomToTopRight {
+    10% {
+      transform: translateY(50%) translateX(-10%); /* Start from bottom */
+    }
+    50% {
+      transform: translateY(0%) translateX(0%); /* Move to normal position */
+    }
+    100% {
+      transform: translateY(-50%) translateX(10%); /* End at the top-right */
+    }
+  }
+  
+.templeteinput1::placeholder{
+  display: flex;
+  align-items: start;
+  font-size: 14px;
+  color: #AEAEAE;
+  
+}
+
+/* Target the scrollbar */
+.sectionTemplete::-webkit-scrollbar {
+  width: 8px; 
+}
+
+
+.sectionTemplete::-webkit-scrollbar-track {
+  background: #f0f0f0; 
+  border-radius: 4px; 
+}
+
+.sectionTemplete::-webkit-scrollbar-thumb {
+  background: #d9d9d9; 
+  border-radius: 4px; 
+}
+
+.sectionTemplete::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3; 
+}
+
+.sectionTemplete {
+ scrollbar-width: thin; 
+  scrollbar-color: #d9d9d9 #f0f0f0; 
+}
+.sectionTemplete::-webkit-scrollbar-button {
+  display: none; 
+}
+.sectionTemplete::-webkit-scrollbar-button {
+  height: 0px;
+  width: 0px;
+  display: none;
+}
